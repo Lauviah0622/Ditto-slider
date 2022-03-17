@@ -1,0 +1,22 @@
+.container {
+  border: 1px solid black;
+  
+  width: 1000px;
+  height: 200px;
+  overflow-x: hidden;
+
+}
+
+.offset {
+    display: flex;
+    height: 100%;
+    transition: .5s;
+}
+
+.card {
+    margin-right: 5px;
+    & img {
+      height: 100%;
+      width: 200px;
+  }
+}
