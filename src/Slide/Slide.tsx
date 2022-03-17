@@ -9,13 +9,9 @@ import {
   SliderParams,
 } from "./utils";
 
-export type SlideContainer = (
-  props: {
-    children: JSX.Element;
-  },
-  ref: React.ForwardedRef<HTMLDivElement>
-) => JSX.Element;
-
+export type SlideContainer = React.ForwardRefRenderFunction<HTMLDivElement, {
+  children: JSX.Element;
+}>
 export type SlideItem = (props: { src: string }) => JSX.Element;
 
 interface SlideProps {
@@ -52,8 +48,8 @@ export default function Slide({
     useState<SliderParams["containerWidth"]>(0);
   const [gapWidth, setGapWidth] = useState<SliderParams["gapWidth"]>(0);
 
-  const containerRef = useRef<HTMLDivElement>();
-  const sliderRef = useRef<HTMLDivElement>();
+  const containerRef = useRef<HTMLDivElement>(null);
+  const sliderRef = useRef<HTMLDivElement>(null);
 
   useSliderImageLoadedHook(sliderRef, () => {
     setIsImageRendered(true);

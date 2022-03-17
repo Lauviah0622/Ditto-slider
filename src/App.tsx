@@ -15,7 +15,12 @@ const Item: SlideItem = ({ src }: { src: string }) => (
   </div>
 );
 
-const Container: SlideContainer = React.forwardRef(({ children }, ref) => (
+const Container: SlideContainer = React.forwardRef<
+  HTMLDivElement,
+  {
+    children: JSX.Element;
+  }
+>(({ children }, ref) => (
   <div className={style.container} ref={ref}>
     {children}
   </div>
